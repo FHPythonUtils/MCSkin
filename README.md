@@ -11,6 +11,8 @@
 <!-- omit in toc -->
 # MCSkin
 
+<img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
+
 For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 
 More features in the future.

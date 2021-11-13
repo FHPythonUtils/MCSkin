@@ -4,4 +4,4 @@
 
 entry point for python -m simplesecurity
 
-- [Mcskin_](../README.md#mcskin_-index) / [Modules](../README.md#mcskin_-modules) / [mcskin](index.md#mcskin) / \_\_main\_\_
+- [Mcskin](../README.md#mcskin-index) / [Modules](../README.md#mcskin-modules) / [mcskin](index.md#mcskin) / \_\_main\_\_

@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "mcskin"
-version = "2021"
+version = "2021.1"
+license = "mit"
 description = "For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins."
 authors = ["FredHappyface"]
 classifiers = [
@@ -10,13 +11,8 @@ classifiers = [
 	"Development Status :: 5 - Production/Stable",
 	"Intended Audience :: Developers",
 	"Intended Audience :: Education",
-	"License :: OSI Approved :: MIT License",
 	"Natural Language :: English",
 	"Operating System :: OS Independent",
-	"Programming Language :: Python :: 3",
-	"Programming Language :: Python :: 3.7",
-	"Programming Language :: Python :: 3.8",
-	"Programming Language :: Python :: 3.9",
 	"Programming Language :: Python :: Implementation :: CPython",
 	"Topic :: Software Development :: Libraries :: Python Modules",
 	"Topic :: Utilities"
@@ -31,13 +27,42 @@ mcskin = 'mcskin:cli'
 
 [tool.poetry.dependencies]
 python = "^3.7"
-numpy = "<3,>=1.20.1"
-chainer = "<9,>=7.7.0"
-six = "<3,>=1.15.0"
-layeredimage = "<2023,>=2021.2.1"
-Pillow = "<10,>=8.1.2"
-Wand = "<2,>=0.6.6"
+waifu2x = "<2023,>=2021.2"
+Pillow = "<9,>=8.4.0"
+layeredimage = "<2023,>=2021.2.8"
 
+[tool.pylint.basic]
+argument-naming-style = "camelCase"
+attr-naming-style = "camelCase"
+function-naming-style = "camelCase"
+method-naming-style = "camelCase"
+variable-naming-style = "camelCase"
+
+[tool.pylint.format]
+indent-string = "\t"
+
+[tool.pylint.master]
+ignore-patterns = "test_.*?py"
+
+[tool.pylint.messages_control]
+enable = ["F", "E", "W", "R", "C"]
+disable = [
+	"pointless-string-statement",
+	"superfluous-parens",
+	"bad-continuation"
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py37"]
+
+[tool.isort]
+profile = "black"
+indent = "Tab"
+
+[tool.pydocstyle]
+convention = "google"
+ignore = "D205,D415"
 
 [build-system]
 requires = ["poetry-core"]

@@ -8,20 +8,9 @@ from pathlib import Path
 from sys import exit as sysexit
 
 import layeredimage.io
-import PIL
 from layeredimage.layeredimage import Layer, LayeredImage
-from PIL import Image
-
-THISDIR = str(Path(__file__).resolve().parent)
-from .waifu2x import load_models, upscale_image
-
-
-class Namespace:
-	"""Simulates argparse namespace."""
-
-	def __init__(self, **kwargs):
-		"""Simulates argparse namespace."""
-		self.__dict__.update(kwargs)
+from PIL import Image, UnidentifiedImageError
+from waifu2x import load_models, upscale_image
 
 
 def cleanImg(image: Image.Image, alphaThreshold: int = 225) -> Image.Image:
@@ -54,12 +43,12 @@ def ver1to2(layer: Layer) -> Layer:
 		Layer: upscaled layer
 	"""
 	image = layer.image
-	args = Namespace(
+	args = argparse.Namespace(
 		gpu=-1,
 		method="scale",
 		noise_level=1,
 		color="rgb",
-		model_dir=THISDIR + "/models/vgg7/",
+		model_dir=f"{Path(__file__).resolve().parent}/models/vgg7/",
 		arch="VGG7",
 		scale_ratio=2,
 		tta_level=8,
@@ -92,6 +81,10 @@ def ver0to1(layer: Layer) -> Layer:
 	image = layer.image
 	background = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
 	background.paste(image, (0, 0), image)
+	leg = image.crop((0, 16, 16, 32))
+	background.paste(leg, (16, 48), leg)
+	arm = image.crop((40, 16, 56, 32))
+	background.paste(arm, (32, 48), arm)
 	return Layer(
 		layer.name,
 		background,
@@ -180,7 +173,7 @@ def upgradeLayer(layer: Layer, target: int = 2) -> Layer | None:
 			return ver1to0(layer)
 		if ver == 1:
 			return ver1to0(layer)
-	return
+	return None
 
 
 def getVer(layer: Layer) -> int:
@@ -218,25 +211,30 @@ def upgradeTex(layeredImage: LayeredImage, target: int = 2) -> LayeredImage:
 	return layeredImage
 
 
-def openRawTex(filePath: str) -> LayeredImage | None:
+def openRawTex(filePath: str) -> LayeredImage:
 	"""Open texture from a file path
 
 	Args:
 		filePath (str): path
 
+	Raises:
+		ValueError: []
+
 	Returns:
-		LayeredImage|None: texture
+		LayeredImage: texture
 	"""
 	layeredImage = None
 	try:
 		image = Image.open(filePath)
 		layeredImage = LayeredImage([Layer("layer0", image, image.size)])
-	except PIL.UnidentifiedImageError:
+	except UnidentifiedImageError:
 		try:
 			layeredImage = layeredimage.io.openLayerImage(filePath)
 		except ValueError:
 			print("Failed")
-	return layeredImage
+	if layeredImage:
+		return layeredImage
+	raise ValueError
 
 
 def dumpTex(filePath: str):
@@ -263,13 +261,8 @@ def dumpTex(filePath: str):
 
 def cli():
 	"""Cli entry point."""
-	# fmt: off
-	parser = argparse.ArgumentParser(description=__doc__,
-		formatter_class=argparse.RawTextHelpFormatter)
-	# Let's use a low severity and medium confidence by default
+	parser = argparse.ArgumentParser(description=__doc__)
 	parser.add_argument("filepath", help="Path to skin source")
 	args = parser.parse_args()
 	dumpTex(args.filepath)
-
 	sysexit(0)
-	# fmt: on

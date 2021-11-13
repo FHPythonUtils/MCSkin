@@ -4,8 +4,7 @@
 
 For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 
-- [Mcskin_](../README.md#mcskin_-index) / [Modules](../README.md#mcskin_-modules) / mcskin
-    - [Namespace](#namespace)
+- [Mcskin](../README.md#mcskin-index) / [Modules](../README.md#mcskin-modules) / mcskin
     - [cleanImg](#cleanimg)
     - [cli](#cli)
     - [dumpTex](#dumptex)
@@ -19,23 +18,10 @@ For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
     - [ver2to1](#ver2to1)
     - Modules
         - [\_\_main\_\_](module.md#__main__)
-        - [lib](lib/index.md#lib)
-        - [waifu2x](waifu2x.md#waifu2x)
-
-## Namespace
-
-[[find in source code]](../../mcskin/__init__.py#L19)
-
-```python
-class Namespace():
-    def __init__(**kwargs):
-```
-
-Simulates argparse namespace.
 
 ## cleanImg
 
-[[find in source code]](../../mcskin/__init__.py#L27)
+[[find in source code]](../../mcskin/__init__.py#L16)
 
 ```python
 def cleanImg(image: Image.Image, alphaThreshold: int = 225) -> Image.Image:
@@ -54,7 +40,7 @@ Clean up semi transparent stuff when upscaling and saving with a threshold.
 
 ## cli
 
-[[find in source code]](../../mcskin/__init__.py#L264)
+[[find in source code]](../../mcskin/__init__.py#L262)
 
 ```python
 def cli():
@@ -64,7 +50,7 @@ Cli entry point.
 
 ## dumpTex
 
-[[find in source code]](../../mcskin/__init__.py#L242)
+[[find in source code]](../../mcskin/__init__.py#L240)
 
 ```python
 def dumpTex(filePath: str):
@@ -78,7 +64,7 @@ For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 
 ## getVer
 
-[[find in source code]](../../mcskin/__init__.py#L186)
+[[find in source code]](../../mcskin/__init__.py#L179)
 
 ```python
 def getVer(layer: Layer) -> int:
@@ -96,10 +82,10 @@ Make a guess at the version based on the layer dimensions.
 
 ## openRawTex
 
-[[find in source code]](../../mcskin/__init__.py#L221)
+[[find in source code]](../../mcskin/__init__.py#L214)
 
 ```python
-def openRawTex(filePath: str) -> LayeredImage | None:
+def openRawTex(filePath: str) -> LayeredImage:
 ```
 
 Open texture from a file path
@@ -108,13 +94,17 @@ Open texture from a file path
 
 - `filePath` *str* - path
 
+#### Raises
+
+- `ValueError` - []
+
 #### Returns
 
-- `LayeredImage|None` - texture
+- `LayeredImage` - texture
 
 ## upgradeLayer
 
-[[find in source code]](../../mcskin/__init__.py#L153)
+[[find in source code]](../../mcskin/__init__.py#L146)
 
 ```python
 def upgradeLayer(layer: Layer, target: int = 2) -> Layer | None:
@@ -133,7 +123,7 @@ Layer | None: Layer or None
 
 ## upgradeTex
 
-[[find in source code]](../../mcskin/__init__.py#L202)
+[[find in source code]](../../mcskin/__init__.py#L195)
 
 ```python
 def upgradeTex(layeredImage: LayeredImage, target: int = 2) -> LayeredImage:
@@ -152,7 +142,7 @@ Upgrade/ port a texture
 
 ## ver0to1
 
-[[find in source code]](../../mcskin/__init__.py#L83)
+[[find in source code]](../../mcskin/__init__.py#L72)
 
 ```python
 def ver0to1(layer: Layer) -> Layer:
@@ -170,7 +160,7 @@ Convert a 1.0 skin to 1.8.
 
 ## ver1to0
 
-[[find in source code]](../../mcskin/__init__.py#L106)
+[[find in source code]](../../mcskin/__init__.py#L99)
 
 ```python
 def ver1to0(layer: Layer) -> Layer:
@@ -188,7 +178,7 @@ Convert a 1.8 skin to 1.0.
 
 ## ver1to2
 
-[[find in source code]](../../mcskin/__init__.py#L47)
+[[find in source code]](../../mcskin/__init__.py#L36)
 
 ```python
 def ver1to2(layer: Layer) -> Layer:
@@ -206,7 +196,7 @@ Convert a 1.8 skin to 1.8_bedrock.
 
 ## ver2to1
 
-[[find in source code]](../../mcskin/__init__.py#L131)
+[[find in source code]](../../mcskin/__init__.py#L124)
 
 ```python
 def ver2to1(layer: Layer) -> Layer:

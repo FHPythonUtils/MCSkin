@@ -3,6 +3,10 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2021.1.1 - 2021/12/10
+
+- Write files to `output/<image_name>` in-place of `<image_name>.d`
+
 ## 2021.1 - 2021/11/13
 
 - add pre-commit

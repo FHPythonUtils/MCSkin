@@ -40,7 +40,7 @@ Clean up semi transparent stuff when upscaling and saving with a threshold.
 
 ## cli
 
-[[find in source code]](../../mcskin/__init__.py#L262)
+[[find in source code]](../../mcskin/__init__.py#L266)
 
 ```python
 def cli():

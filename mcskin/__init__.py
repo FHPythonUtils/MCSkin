@@ -243,20 +243,24 @@ def dumpTex(filePath: str):
 	Args:
 		filePath (str): path to skin
 	"""
-	if not os.path.exists(filePath + ".d"):
-		os.makedirs(filePath + ".d")
+	# Open
 	layeredImage = openRawTex(filePath)
+
+	# Write
+	filePath = f"output/{filePath}"
+	if not os.path.exists(filePath):
+		os.makedirs(filePath)
 	ver18b = upgradeTex(layeredImage)
-	layeredimage.io.saveLayerImage(filePath + ".d/18b.ora", ver18b)
-	cleanImg(layeredImage.getFlattenLayers()).save(filePath + ".d/18b.png")
+	layeredimage.io.saveLayerImage(filePath + "/18b.ora", ver18b)
+	cleanImg(layeredImage.getFlattenLayers()).save(filePath + "/18b.png")
 
 	ver18 = upgradeTex(layeredImage, 1)
-	layeredimage.io.saveLayerImage(filePath + ".d/18.ora", ver18)
-	cleanImg(layeredImage.getFlattenLayers()).save(filePath + ".d/18.png")
+	layeredimage.io.saveLayerImage(filePath + "/18.ora", ver18)
+	cleanImg(layeredImage.getFlattenLayers()).save(filePath + "/18.png")
 
 	ver10 = upgradeTex(layeredImage, 0)
-	layeredimage.io.saveLayerImage(filePath + ".d/10.ora", ver10)
-	cleanImg(layeredImage.getFlattenLayers()).save(filePath + ".d/10.png")
+	layeredimage.io.saveLayerImage(filePath + "/10.ora", ver10)
+	cleanImg(layeredImage.getFlattenLayers()).save(filePath + "/10.png")
 
 
 def cli():

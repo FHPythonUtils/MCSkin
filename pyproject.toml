@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mcskin"
-version = "2021.1"
+version = "2021.1.1"
 license = "mit"
 description = "For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins."
 authors = ["FredHappyface"]
@@ -37,6 +37,7 @@ attr-naming-style = "camelCase"
 function-naming-style = "camelCase"
 method-naming-style = "camelCase"
 variable-naming-style = "camelCase"
+good-names = "i,j,k,ex,Run,_,x,y"
 
 [tool.pylint.format]
 indent-string = "\t"

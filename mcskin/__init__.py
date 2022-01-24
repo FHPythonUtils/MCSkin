@@ -13,12 +13,12 @@ from PIL import Image, UnidentifiedImageError
 from waifu2x import load_models, upscale_image
 
 
-def cleanImg(image: Image.Image, alphaThreshold: int = 225) -> Image.Image:
+def cleanImg(image: Image.Image, alphaThreshold: int = 205) -> Image.Image:
 	"""Clean up semi transparent stuff when upscaling and saving with a threshold.
 
 	Args:
 		image (Image.Image): pil image to clean up
-		alphaThreshold (int, optional): threshold. Defaults to 225.
+		alphaThreshold (int, optional): threshold. Defaults to 205.
 
 	Returns:
 		Image.Image: [description]
@@ -42,7 +42,7 @@ def ver1to2(layer: Layer) -> Layer:
 	Returns:
 		Layer: upscaled layer
 	"""
-	image = layer.image
+	image = layer.image.convert("RGBA")
 	args = argparse.Namespace(
 		gpu=-1,
 		method="scale",
@@ -78,7 +78,7 @@ def ver0to1(layer: Layer) -> Layer:
 	Returns:
 		Layer: ported layer
 	"""
-	image = layer.image
+	image = layer.image.convert("RGBA")
 	background = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
 	background.paste(image, (0, 0), image)
 	leg = image.crop((0, 16, 16, 32))
@@ -105,7 +105,7 @@ def ver1to0(layer: Layer) -> Layer:
 	Returns:
 		Layer: backport layer
 	"""
-	image = layer.image
+	image = layer.image.convert("RGBA")
 	background = Image.new("RGBA", (64, 32), (0, 0, 0, 0))
 	background.paste(image, (0, 0), image)
 	image2 = image.crop((0, 32, 64, 64))
@@ -130,7 +130,7 @@ def ver2to1(layer: Layer) -> Layer:
 	Returns:
 		Layer: downscale layer
 	"""
-	image = layer.image
+	image = layer.image.convert("RGBA")
 	image.resize((64, 64))
 	return Layer(
 		layer.name,
@@ -250,17 +250,17 @@ def dumpTex(filePath: str):
 	filePath = f"output/{filePath}"
 	if not os.path.exists(filePath):
 		os.makedirs(filePath)
-	ver18b = upgradeTex(layeredImage)
-	layeredimage.io.saveLayerImage(filePath + "/18b.ora", ver18b)
-	cleanImg(layeredImage.getFlattenLayers()).save(filePath + "/18b.png")
+	ver18b = upgradeTex(layeredImage, 2)
+	layeredimage.io.saveLayerImage(f"{filePath}/18b.ora", ver18b)
+	cleanImg(ver18b.getFlattenLayers(), 225).save(f"{filePath}/18b.png")
 
 	ver18 = upgradeTex(layeredImage, 1)
-	layeredimage.io.saveLayerImage(filePath + "/18.ora", ver18)
-	cleanImg(layeredImage.getFlattenLayers()).save(filePath + "/18.png")
+	layeredimage.io.saveLayerImage(f"{filePath}/18.ora", ver18)
+	cleanImg(ver18.getFlattenLayers(), 225).save(f"{filePath}/18.png")
 
 	ver10 = upgradeTex(layeredImage, 0)
-	layeredimage.io.saveLayerImage(filePath + "/10.ora", ver10)
-	cleanImg(layeredImage.getFlattenLayers()).save(filePath + "/10.png")
+	layeredimage.io.saveLayerImage(f"{filePath}/10.ora", ver10)
+	cleanImg(ver10.getFlattenLayers(), 225).save(f"{filePath}/10.png")
 
 
 def cli():

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mcskin"
-version = "2021.1.1"
+version = "2022"
 license = "mit"
 description = "For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins."
 authors = ["FredHappyface"]
@@ -26,11 +26,14 @@ readme = "README.md"
 mcskin = 'mcskin:cli'
 
 [tool.poetry.dependencies]
-python = "^3.7"
-waifu2x = "<2023,>=2021.2"
-Pillow = "<9,>=8.4.0"
-layeredimage = "<2023,>=2021.2.8"
+python = ">=3.8,<4.0"
+waifu2x = "<2024,>=2022"
+Pillow = "<10,>=9.0.0"
+layeredimage = "<2024,>=2022"
 
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+imgcompare = "^2.0.1"
 [tool.pylint.basic]
 argument-naming-style = "camelCase"
 attr-naming-style = "camelCase"

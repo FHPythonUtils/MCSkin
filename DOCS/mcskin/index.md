@@ -24,7 +24,7 @@ For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 [[find in source code]](../../mcskin/__init__.py#L16)
 
 ```python
-def cleanImg(image: Image.Image, alphaThreshold: int = 225) -> Image.Image:
+def cleanImg(image: Image.Image, alphaThreshold: int = 205) -> Image.Image:
 ```
 
 Clean up semi transparent stuff when upscaling and saving with a threshold.
@@ -32,7 +32,7 @@ Clean up semi transparent stuff when upscaling and saving with a threshold.
 #### Arguments
 
 - `image` *Image.Image* - pil image to clean up
-- `alphaThreshold` *int, optional* - threshold. Defaults to 225.
+- `alphaThreshold` *int, optional* - threshold. Defaults to 205.
 
 #### Returns
 

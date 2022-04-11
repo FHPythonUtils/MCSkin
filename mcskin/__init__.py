@@ -263,7 +263,7 @@ def dumpTex(filePath: str):
 	cleanImg(ver10.getFlattenLayers(), 225).save(f"{filePath}/10.png")
 
 
-def cli():
+def cli():  # pragma: no cover
 	"""Cli entry point."""
 	parser = argparse.ArgumentParser(description=__doc__)
 	parser.add_argument("filepath", help="Path to skin source")

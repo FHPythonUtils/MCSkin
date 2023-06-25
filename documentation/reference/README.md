@@ -1,9 +1,8 @@
-# Mcskin Modules
+# Mcskin Index
 
-> Auto-generated documentation modules index.
+> Auto-generated documentation index.
 
-Full list of [Mcskin](README.md#mcskin-index) project modules.
+A full list of `Mcskin` project modules.
 
-- [Mcskin Index](README.md#mcskin-index)
 - [Mcskin](mcskin/index.md#mcskin)
     - [Module](mcskin/module.md#module)

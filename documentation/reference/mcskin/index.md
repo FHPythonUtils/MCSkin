@@ -37,8 +37,7 @@ Clean up semi transparent stuff when upscaling and saving with a threshold.
 #### Signature
 
 ```python
-def cleanImg(image: Image.Image, alphaThreshold: int = 205) -> Image.Image:
-    ...
+def cleanImg(image: Image.Image, alphaThreshold: int = 205) -> Image.Image: ...
 ```
 
 
@@ -52,8 +51,7 @@ Cli entry point.
 #### Signature
 
 ```python
-def cli():
-    ...
+def cli(): ...
 ```
 
 
@@ -71,8 +69,7 @@ For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 #### Signature
 
 ```python
-def dumpTex(filePath: str):
-    ...
+def dumpTex(filePath: str): ...
 ```
 
 
@@ -94,8 +91,7 @@ Make a guess at the version based on the layer dimensions.
 #### Signature
 
 ```python
-def getVer(layer: Layer) -> int:
-    ...
+def getVer(layer: Layer) -> int: ...
 ```
 
 
@@ -121,8 +117,7 @@ Open texture from a file path
 #### Signature
 
 ```python
-def openRawTex(filePath: str) -> LayeredImage:
-    ...
+def openRawTex(filePath: str) -> LayeredImage: ...
 ```
 
 
@@ -145,8 +140,7 @@ Layer | None: Layer or None
 #### Signature
 
 ```python
-def upgradeLayer(layer: Layer, target: int = 2) -> Layer | None:
-    ...
+def upgradeLayer(layer: Layer, target: int = 2) -> Layer | None: ...
 ```
 
 
@@ -169,8 +163,7 @@ Upgrade/ port a texture
 #### Signature
 
 ```python
-def upgradeTex(layeredImage: LayeredImage, target: int = 2) -> LayeredImage:
-    ...
+def upgradeTex(layeredImage: LayeredImage, target: int = 2) -> LayeredImage: ...
 ```
 
 
@@ -192,8 +185,7 @@ Convert a 1.0 skin to 1.8.
 #### Signature
 
 ```python
-def ver0to1(layer: Layer) -> Layer:
-    ...
+def ver0to1(layer: Layer) -> Layer: ...
 ```
 
 
@@ -215,8 +207,7 @@ Convert a 1.8 skin to 1.0.
 #### Signature
 
 ```python
-def ver1to0(layer: Layer) -> Layer:
-    ...
+def ver1to0(layer: Layer) -> Layer: ...
 ```
 
 
@@ -238,8 +229,7 @@ Convert a 1.8 skin to 1.8_bedrock.
 #### Signature
 
 ```python
-def ver1to2(layer: Layer) -> Layer:
-    ...
+def ver1to2(layer: Layer) -> Layer: ...
 ```
 
 
@@ -261,8 +251,7 @@ Convert a 1.8_bedrock skin to 1.8.
 #### Signature
 
 ```python
-def ver2to1(layer: Layer) -> Layer:
-    ...
+def ver2to1(layer: Layer) -> Layer: ...
 ```
 
 

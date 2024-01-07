@@ -5,5 +5,4 @@
 Module
 
 > Auto-generated documentation for [mcskin.__main__](../../../mcskin/__main__.py) module.
-
 - [Module](#module)

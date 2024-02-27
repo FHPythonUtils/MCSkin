@@ -1,7 +1,6 @@
 # Mcskin
 
-[Mcskin Index](../README.md#mcskin-index) /
-Mcskin
+[Mcskin Index](../README.md#mcskin-index) / Mcskin
 
 > Auto-generated documentation for [mcskin](../../../mcskin/__init__.py) module.
 

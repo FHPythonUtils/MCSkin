@@ -26,21 +26,23 @@ readme = "README.md"
 mcskin = 'mcskin:cli'
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4.0"
-waifu2x = "<2024,>=2022"
-Pillow = "<10,>=9.0.0"
-layeredimage = "<2024,>=2022"
+python = ">=3.9,<4.0"
+waifu2x = "<2026,>=2024"
+Pillow = "<11,>=10.2.0"
+layeredimage = "<2026,>=2024.2"
 
 [tool.poetry.group.dev.dependencies]
 imgcompare = "^2.0.1"
-pytest = "^7.4.0"
-pylint = "^2.17.5"
-handsdown = "^2.0.1"
-coverage = "^7.3.0"
+pytest = "^8.0.2"
+pylint = "^3.1.0"
+handsdown = "^2.1.0"
+coverage = "^7.4.3"
 
-[tool.black]
-line-length = 100
-target-version = ["py38"]
+[tool.ruff.format]
+indent-style = "tab"
+docstring-code-format = true
+line-ending = "lf"
+
 
 [tool.isort]
 profile = "black"

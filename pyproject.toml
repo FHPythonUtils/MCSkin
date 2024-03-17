@@ -29,14 +29,15 @@ mcskin = 'mcskin:cli'
 python = ">=3.9,<4.0"
 waifu2x = "<2026,>=2024"
 Pillow = "<11,>=10.2.0"
-layeredimage = "<2026,>=2024.2"
+layeredimage = "<2026,>=2024.2.1"
 
 [tool.poetry.group.dev.dependencies]
 imgcompare = "^2.0.1"
 pytest = "^8.1.1"
-pylint = "^3.1.0"
 handsdown = "^2.1.0"
 coverage = "^7.4.4"
+ruff = "^0.3.3"
+pyright = "^1.1.354"
 
 [build-system]
 requires = ["poetry-core"]

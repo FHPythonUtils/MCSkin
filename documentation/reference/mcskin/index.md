@@ -26,12 +26,14 @@ Clean up semi transparent stuff when upscaling and saving with a threshold.
 
 #### Arguments
 
-- `image` *Image.Image* - pil image to clean up
-- `alphaThreshold` *int, optional* - threshold. Defaults to 205.
+----
+ - `image` *Image.Image* - pil image to clean up
+ - `alphaThreshold` *int, optional* - threshold. Defaults to 205.
 
 #### Returns
 
-- `Image.Image` - [description]
+-------
+ - `Image.Image` - [description]
 
 #### Signature
 
@@ -43,7 +45,7 @@ def cleanImg(image: Image.Image, alphaThreshold: int = 205) -> Image.Image: ...
 
 ## cli
 
-[Show source in __init__.py:266](../../../mcskin/__init__.py#L266)
+[Show source in __init__.py:297](../../../mcskin/__init__.py#L297)
 
 Cli entry point.
 
@@ -57,13 +59,14 @@ def cli(): ...
 
 ## dumpTex
 
-[Show source in __init__.py:240](../../../mcskin/__init__.py#L240)
+[Show source in __init__.py:269](../../../mcskin/__init__.py#L269)
 
 For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 
 #### Arguments
 
-- `filePath` *str* - path to skin
+----
+ - `filePath` *str* - path to skin
 
 #### Signature
 
@@ -75,17 +78,19 @@ def dumpTex(filePath: str): ...
 
 ## getVer
 
-[Show source in __init__.py:179](../../../mcskin/__init__.py#L179)
+[Show source in __init__.py:198](../../../mcskin/__init__.py#L198)
 
 Make a guess at the version based on the layer dimensions.
 
 #### Arguments
 
-- `layer` *Layer* - the layer
+----
+ - `layer` *Layer* - the layer
 
 #### Returns
 
-- `int` - the estimated version
+-------
+ - `int` - the estimated version
 
 #### Signature
 
@@ -97,21 +102,24 @@ def getVer(layer: Layer) -> int: ...
 
 ## openRawTex
 
-[Show source in __init__.py:214](../../../mcskin/__init__.py#L214)
+[Show source in __init__.py:239](../../../mcskin/__init__.py#L239)
 
 Open texture from a file path
 
 #### Arguments
 
-- `filePath` *str* - path
+----
+ - `filePath` *str* - path
 
 #### Raises
 
-- `ValueError` - []
+------
+ - `ValueError` - []
 
 #### Returns
 
-- `LayeredImage` - texture
+-------
+ - `LayeredImage` - texture
 
 #### Signature
 
@@ -123,18 +131,20 @@ def openRawTex(filePath: str) -> LayeredImage: ...
 
 ## upgradeLayer
 
-[Show source in __init__.py:146](../../../mcskin/__init__.py#L146)
+[Show source in __init__.py:162](../../../mcskin/__init__.py#L162)
 
 Layer to port or upgrade
 
 #### Arguments
 
-- `layer` *Layer* - texture layer to act on
-- `target` *int, optional* - target version. Defaults to 2.
+----
+ - `layer` *Layer* - texture layer to act on
+ - `target` *int, optional* - target version. Defaults to 2.
 
 #### Returns
 
-Layer | None: Layer or None
+-------
+ Layer | None: Layer or None
 
 #### Signature
 
@@ -146,18 +156,20 @@ def upgradeLayer(layer: Layer, target: int = 2) -> Layer | None: ...
 
 ## upgradeTex
 
-[Show source in __init__.py:195](../../../mcskin/__init__.py#L195)
+[Show source in __init__.py:217](../../../mcskin/__init__.py#L217)
 
 Upgrade/ port a texture
 
 #### Arguments
 
-- `layeredImage` *LayeredImage* - represents the texture
-- `target` *int, optional* - target version. Defaults to 2.
+----
+ - `layeredImage` *LayeredImage* - represents the texture
+ - `target` *int, optional* - target version. Defaults to 2.
 
 #### Returns
 
-- `LayeredImage` - upgraded texture
+-------
+ - `LayeredImage` - upgraded texture
 
 #### Signature
 
@@ -169,17 +181,19 @@ def upgradeTex(layeredImage: LayeredImage, target: int = 2) -> LayeredImage: ...
 
 ## ver0to1
 
-[Show source in __init__.py:72](../../../mcskin/__init__.py#L72)
+[Show source in __init__.py:78](../../../mcskin/__init__.py#L78)
 
 Convert a 1.0 skin to 1.8.
 
 #### Arguments
 
-- `layer` *Layer* - texture layer to port
+----
+ - `layer` *Layer* - texture layer to port
 
 #### Returns
 
-- `Layer` - ported layer
+-------
+ - `Layer` - ported layer
 
 #### Signature
 
@@ -191,17 +205,19 @@ def ver0to1(layer: Layer) -> Layer: ...
 
 ## ver1to0
 
-[Show source in __init__.py:99](../../../mcskin/__init__.py#L99)
+[Show source in __init__.py:108](../../../mcskin/__init__.py#L108)
 
 Convert a 1.8 skin to 1.0.
 
 #### Arguments
 
-- `layer` *Layer* - texture layer to backport
+----
+ - `layer` *Layer* - texture layer to backport
 
 #### Returns
 
-- `Layer` - backport layer
+-------
+ - `Layer` - backport layer
 
 #### Signature
 
@@ -213,17 +229,19 @@ def ver1to0(layer: Layer) -> Layer: ...
 
 ## ver1to2
 
-[Show source in __init__.py:36](../../../mcskin/__init__.py#L36)
+[Show source in __init__.py:39](../../../mcskin/__init__.py#L39)
 
 Convert a 1.8 skin to 1.8_bedrock.
 
 #### Arguments
 
-- `layer` *Layer* - texture layer to upscale
+----
+ - `layer` *Layer* - texture layer to upscale
 
 #### Returns
 
-- `Layer` - upscaled layer
+-------
+ - `Layer` - upscaled layer
 
 #### Signature
 
@@ -235,17 +253,19 @@ def ver1to2(layer: Layer) -> Layer: ...
 
 ## ver2to1
 
-[Show source in __init__.py:124](../../../mcskin/__init__.py#L124)
+[Show source in __init__.py:136](../../../mcskin/__init__.py#L136)
 
 Convert a 1.8_bedrock skin to 1.8.
 
 #### Arguments
 
-- `layer` *Layer* - texture layer to downscale
+----
+ - `layer` *Layer* - texture layer to downscale
 
 #### Returns
 
-- `Layer` - downscale layer
+-------
+ - `Layer` - downscale layer
 
 #### Signature
 

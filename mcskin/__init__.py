@@ -1,5 +1,5 @@
-"""For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
-"""
+"""For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins."""
+
 from __future__ import annotations
 
 import argparse
@@ -17,11 +17,14 @@ def cleanImg(image: Image.Image, alphaThreshold: int = 205) -> Image.Image:
 	"""Clean up semi transparent stuff when upscaling and saving with a threshold.
 
 	Args:
+	----
 		image (Image.Image): pil image to clean up
 		alphaThreshold (int, optional): threshold. Defaults to 205.
 
 	Returns:
+	-------
 		Image.Image: [description]
+
 	"""
 	pixdata = image.load()
 	for y in range(image.size[1]):
@@ -37,10 +40,13 @@ def ver1to2(layer: Layer) -> Layer:
 	"""Convert a 1.8 skin to 1.8_bedrock.
 
 	Args:
+	----
 		layer (Layer): texture layer to upscale
 
 	Returns:
+	-------
 		Layer: upscaled layer
+
 	"""
 	image = layer.image.convert("RGBA")
 	args = argparse.Namespace(
@@ -59,13 +65,13 @@ def ver1to2(layer: Layer) -> Layer:
 	model = load_models(args)
 	image = cleanImg(upscale_image(args, image, model["scale"]))
 	return Layer(
-		layer.name,
-		image,
-		image.size,
-		(layer.offsets[0] * 2, layer.offsets[1] * 2),
-		layer.opacity,
-		layer.visible,
-		layer.blendmode,
+		name=layer.name,
+		image=image,
+		dimensions=image.size,
+		offsets=(layer.offsets[0] * 2, layer.offsets[1] * 2),
+		opacity=layer.opacity,
+		visible=layer.visible,
+		blendmode=layer.blendmode,
 	)
 
 
@@ -73,10 +79,13 @@ def ver0to1(layer: Layer) -> Layer:
 	"""Convert a 1.0 skin to 1.8.
 
 	Args:
+	----
 		layer (Layer): texture layer to port
 
 	Returns:
+	-------
 		Layer: ported layer
+
 	"""
 	image = layer.image.convert("RGBA")
 	background = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
@@ -86,13 +95,13 @@ def ver0to1(layer: Layer) -> Layer:
 	arm = image.crop((40, 16, 56, 32))
 	background.paste(arm, (32, 48), arm)
 	return Layer(
-		layer.name,
-		background,
-		background.size,
-		(layer.offsets[0], layer.offsets[1]),
-		layer.opacity,
-		layer.visible,
-		layer.blendmode,
+		name=layer.name,
+		image=background,
+		dimensions=background.size,
+		offsets=(layer.offsets[0], layer.offsets[1]),
+		opacity=layer.opacity,
+		visible=layer.visible,
+		blendmode=layer.blendmode,
 	)
 
 
@@ -100,10 +109,13 @@ def ver1to0(layer: Layer) -> Layer:
 	"""Convert a 1.8 skin to 1.0.
 
 	Args:
+	----
 		layer (Layer): texture layer to backport
 
 	Returns:
+	-------
 		Layer: backport layer
+
 	"""
 	image = layer.image.convert("RGBA")
 	background = Image.new("RGBA", (64, 32), (0, 0, 0, 0))
@@ -111,13 +123,13 @@ def ver1to0(layer: Layer) -> Layer:
 	image2 = image.crop((0, 32, 64, 64))
 	background.paste(image2, (0, 16), image2)
 	return Layer(
-		layer.name,
-		background,
-		background.size,
-		(layer.offsets[0], layer.offsets[1]),
-		layer.opacity,
-		layer.visible,
-		layer.blendmode,
+		name=layer.name,
+		image=background,
+		dimensions=background.size,
+		offsets=(layer.offsets[0], layer.offsets[1]),
+		opacity=layer.opacity,
+		visible=layer.visible,
+		blendmode=layer.blendmode,
 	)
 
 
@@ -125,21 +137,25 @@ def ver2to1(layer: Layer) -> Layer:
 	"""Convert a 1.8_bedrock skin to 1.8.
 
 	Args:
+	----
 		layer (Layer): texture layer to downscale
 
 	Returns:
+	-------
 		Layer: downscale layer
+
 	"""
 	image = layer.image.convert("RGBA")
 	image.resize((64, 64))
+
 	return Layer(
-		layer.name,
-		image,
-		image.size,
-		(layer.offsets[0], layer.offsets[1]),
-		layer.opacity,
-		layer.visible,
-		layer.blendmode,
+		name=layer.name,
+		image=image,
+		dimensions=image.size,
+		offsets=(layer.offsets[0], layer.offsets[1]),
+		opacity=layer.opacity,
+		visible=layer.visible,
+		blendmode=layer.blendmode,
 	)
 
 
@@ -147,11 +163,14 @@ def upgradeLayer(layer: Layer, target: int = 2) -> Layer | None:
 	"""Layer to port or upgrade
 
 	Args:
+	----
 		layer (Layer): texture layer to act on
 		target (int, optional): target version. Defaults to 2.
 
 	Returns:
+	-------
 		Layer | None: Layer or None
+
 	"""
 	ver = getVer(layer)
 	if ver == target:
@@ -180,10 +199,13 @@ def getVer(layer: Layer) -> int:
 	"""Make a guess at the version based on the layer dimensions.
 
 	Args:
+	----
 		layer (Layer): the layer
 
 	Returns:
+	-------
 		int: the estimated version
+
 	"""
 	if layer.dimensions[0] > 64 and layer.dimensions[1] > 64:
 		return 2
@@ -196,11 +218,14 @@ def upgradeTex(layeredImage: LayeredImage, target: int = 2) -> LayeredImage:
 	"""Upgrade/ port a texture
 
 	Args:
+	----
 		layeredImage (LayeredImage): represents the texture
 		target (int, optional): target version. Defaults to 2.
 
 	Returns:
+	-------
 		LayeredImage: upgraded texture
+
 	"""
 	versions = {0: (64, 32), 1: (64, 64), 2: (128, 128)}
 	layers = []
@@ -215,13 +240,17 @@ def openRawTex(filePath: str) -> LayeredImage:
 	"""Open texture from a file path
 
 	Args:
+	----
 		filePath (str): path
 
 	Raises:
+	------
 		ValueError: []
 
 	Returns:
+	-------
 		LayeredImage: texture
+
 	"""
 	layeredImage = None
 	try:
@@ -241,7 +270,9 @@ def dumpTex(filePath: str):
 	"""For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins.
 
 	Args:
+	----
 		filePath (str): path to skin
+
 	"""
 	# Open
 	layeredImage = openRawTex(filePath)

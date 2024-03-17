@@ -17,29 +17,29 @@ from mcskin import cleanImg, openRawTex, upgradeTex
 layeredImage = openRawTex(f"{THISDIR}/data/template18.png")
 
 
-def test_layeredImage_is_layeredimage():
+def test_layeredImage_is_layeredimage() -> None:
 	assert isinstance(layeredImage, LayeredImage)
 
 
-def test_layeredImage_has_1layer():
+def test_layeredImage_has_1layer() -> None:
 	assert len(layeredImage.layers) == 1
 
 
-def test_upgrade_18b():
+def test_upgrade_18b() -> None:
 	img = upgradeTex(layeredImage, 2)
 	imgClean = cleanImg(img.getFlattenLayers())
 	imgClean.save(f"{THISDIR}/data/out_18b.png")
 	assert imgcompare.is_equal(imgClean, f"{THISDIR}/data/out_18b_expected.png")
 
 
-def test_upgrade_18():
+def test_upgrade_18() -> None:
 	img = upgradeTex(layeredImage, 1)
 	imgClean = cleanImg(img.getFlattenLayers())
 	imgClean.save(f"{THISDIR}/data/out_18.png")
 	assert imgcompare.is_equal(imgClean, f"{THISDIR}/data/out_18_expected.png")
 
 
-def test_upgrade_10():
+def test_upgrade_10() -> None:
 	img = upgradeTex(layeredImage, 0)
 	imgClean = cleanImg(img.getFlattenLayers())
 	imgClean.save(f"{THISDIR}/data/out_10.png")

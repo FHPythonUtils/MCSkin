@@ -1,7 +1,7 @@
-"""entry point for python -m simplesecurity"""
+"""entry point for python -m simplesecurity."""
 
 from __future__ import annotations
 
-from . import cli
+from mcskin import cli
 
 cli()

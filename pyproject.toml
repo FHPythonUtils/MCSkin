@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mcskin"
-version = "2022"
+version = "2024"
 license = "mit"
 description = "For some raw skin, generate 1.0, 1.8 and 1.8 bedrock skins."
 authors = ["FredHappyface"]

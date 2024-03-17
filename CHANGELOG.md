@@ -3,6 +3,13 @@
 All major and minor version changes will be documented in this file. Details of
 patch-level version changes can be found in [commit messages](../../commits/master).
 
+## 2024 - 2022/03/17
+
+- move docs
+- fix: compatibility with latest layeredimage
+- absolute imports
+- update deps
+
 ## 2022 - 2022/01/24
 
 - Bump pillow version (CVE-2022-22815, CVE-2022-22816, CVE-2022-22817)

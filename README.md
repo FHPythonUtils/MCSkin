@@ -69,6 +69,8 @@ optional arguments:
 
 ## Documentation
 
+**Python 3.12 not supported :(**
+
 A high-level overview of how the documentation is organized organized will help you know
 where to look for certain things:
 
